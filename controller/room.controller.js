@@ -21,7 +21,8 @@ const postRoom = async (req, res) => {
 
 const deleteRoom = async (req, res) => {
     try {
-        let result = await RoomServiceInstance.delete(req.body.roomId);
+        const { _id } = req.params;
+        let result = await RoomServiceInstance.delete(_id);
         res.json(result);
     } catch (error) {
 

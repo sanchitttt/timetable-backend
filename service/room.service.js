@@ -11,7 +11,7 @@ class RoomService {
         return;
     }
     async delete(id) {
-        const res = await Room.findOneAndDelete({ roomId: id });
+        const res = await Room.findOneAndDelete({ _id: id });
         return res;
     }
 }

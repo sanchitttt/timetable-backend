@@ -1,7 +1,9 @@
 require('dotenv').config();
 const express = require('express');
-const app = express();
+const cors = require('cors')
 const mongoose = require('mongoose');
+const app = express();
+
 const { fetchSubjects, addSubject, saveSubjectDetails } = require('./controller/subject.controller');
 const { fetchRooms, postRoom, deleteRoom } = require('./controller/room.controller');
 
@@ -10,6 +12,8 @@ mongoose.connect(process.env.MONGODB_URI)
     .catch((err) => console.log("Failed to connect to the database!"));
 
 app.use(express.json());
+app.use(cors());
+app.options("*", cors());
 
 app.get('/subjects', fetchSubjects);
 app.patch('/subjects', saveSubjectDetails);

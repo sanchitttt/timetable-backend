@@ -21,7 +21,7 @@ app.post('/subjects', addSubject);
 
 app.get('/rooms', fetchRooms);
 app.post('/rooms', postRoom);
-app.delete('rooms/:_id', deleteRoom);
+app.delete('/rooms/:_id', deleteRoom);
 
 
 app.listen(process.env.PORT, () => console.log(`Listening on PORT ${process.env.PORT}...`));

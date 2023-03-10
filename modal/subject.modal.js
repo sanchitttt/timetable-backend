@@ -8,7 +8,8 @@ const schema = new mongoose.Schema({
     class: { type: String },
     semesterLevel: { type: String },
     branch: { type: String },
-    status: { type: String }
+    status: { type: String },
+    taughtBy: { type: String, default: '' }
 });
 
 const Subjects = mongoose.model('subjects', schema);

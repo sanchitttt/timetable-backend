@@ -6,6 +6,8 @@ const app = express();
 
 const { fetchSubjects, addSubject, saveSubjectDetails } = require('./controller/subject.controller');
 const { fetchRooms, postRoom, deleteRoom } = require('./controller/room.controller');
+const { getGenerateTimetableInExcelFormat, postGenerateTimetableInExcelFormat } = require('./controller/timetable.controller');
+const { getTeachers } = require('./controller/teachers.controller');
 
 mongoose.connect(process.env.MONGODB_URI)
     .then((res) => console.log('Successfully connected to the database...'))
@@ -21,7 +23,13 @@ app.post('/subjects', addSubject);
 
 app.get('/rooms', fetchRooms);
 app.post('/rooms', postRoom);
-app.delete('rooms/:_id', deleteRoom);
+app.delete('/rooms/:_id', deleteRoom);
+
+app.get('/teachers', getTeachers)
+
+
+app.post('/timetable-excel', postGenerateTimetableInExcelFormat);
+app.get('/timetable-excel', getGenerateTimetableInExcelFormat);
 
 
 app.listen(process.env.PORT, () => console.log(`Listening on PORT ${process.env.PORT}...`));
